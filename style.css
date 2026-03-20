@@ -1,0 +1,399 @@
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body样式 */
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+/* 添加独立的背景层 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0a0e17;
+    z-index: -1;
+}
+
+/* 标题图片样式 */
+.title-image {
+    max-width: 900px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.title-image:hover {
+    transform: scale(1.02);
+}
+
+/* ===== 战场信息栏样式 ===== */
+.battle-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 10px auto 15px auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* 战场标题 - 深灰色大字号 */
+.battle-title {
+    color: #505050;
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.battle-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.battle-card {
+    flex: 1;
+    background: #2a2a2a;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    padding: 12px 12px;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    min-height: 80px;
+}
+
+/* 悬停效果 - 窄版柔和斜向七彩外发光 */
+.battle-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(220, 220, 220, 0.6);
+    background: #2a2a2a;
+    box-shadow: 
+        2px 2px 20px rgba(255, 100, 100, 0.4),
+        4px 4px 22px rgba(255, 160, 80, 0.4),
+        6px 6px 24px rgba(240, 240, 80, 0.4),
+        8px 8px 26px rgba(100, 240, 100, 0.4),
+        10px 10px 28px rgba(80, 200, 240, 0.4),
+        12px 12px 30px rgba(120, 120, 240, 0.4),
+        14px 14px 32px rgba(200, 120, 240, 0.4);
+    position: relative;
+    z-index: 100;
+}
+
+/* 点击效果 */
+.battle-card:active {
+    transform: translateY(0);
+}
+
+/* 战场名称 */
+.battle-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+/* 参战国家 */
+.battle-countries {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+/* 主内容区 */
+.main-content {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* 地图容器 - 毛玻璃效果 + 灰色实线边框 */
+.map-container {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid #d0d0d0;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+#map {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+/* 国家地块样式 */
+.country {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.country:hover {
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
+.country.selected {
+    filter: drop-shadow(0 0 25px currentColor);
+    transform: translateY(-10px);
+}
+
+/* 右侧信息栏 */
+.info-panel {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.info-header h2 {
+    color: #333;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.close-btn:hover {
+    color: #ff4444;
+}
+
+.info-body p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* 图标组样式 - 确保不阻挡点击 */
+.country-icon-group {
+    pointer-events: none;
+}
+
+.country-icon-group circle {
+    pointer-events: none;
+}
+
+.country-icon-group image {
+    pointer-events: none;
+}
+
+/* ===== 响应式设计 ===== */
+
+/* 平板设备 (1024px以下) */
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .map-container {
+        min-height: 500px;
+        padding: 20px;
+    }
+    
+    .info-panel {
+        width: 100%;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .battle-container {
+        gap: 15px;
+    }
+    
+    .battle-title {
+        font-size: 1.8rem;
+    }
+    
+    .battle-card {
+        padding: 10px 12px;
+    }
+    
+    .battle-name {
+        font-size: 1.1rem;
+    }
+    
+    .battle-countries {
+        font-size: 0.9rem;
+    }
+}
+
+/* 手机设备 (768px以下) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .title-image {
+        max-width: 95%;
+        margin-bottom: 15px;
+    }
+    
+    .battle-section {
+        margin: 8px auto 12px auto;
+    }
+    
+    .battle-title {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .battle-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .battle-card {
+        min-height: 70px;
+        padding: 10px;
+    }
+    
+    .battle-card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .battle-name {
+        font-size: 1rem;
+    }
+    
+    .battle-countries {
+        font-size: 0.85rem;
+    }
+    
+    .map-container {
+        min-height: 400px;
+        padding: 15px;
+    }
+    
+    #map {
+        max-width: 100%;
+    }
+    
+    .info-panel {
+        max-height: 350px;
+        padding: 15px;
+    }
+    
+    .info-header h2 {
+        font-size: 1.1rem;
+    }
+    
+    .info-body p {
+        font-size: 0.9rem;
+    }
+}
+
+/* 小手机设备 (480px以下) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    
+    .title-image {
+        margin-bottom: 10px;
+    }
+    
+    .battle-title {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+    
+    .battle-card {
+        padding: 8px;
+        min-height: 60px;
+    }
+    
+    .battle-name {
+        font-size: 0.95rem;
+    }
+    
+    .battle-countries {
+        font-size: 0.8rem;
+    }
+    
+    .map-container {
+        min-height: 350px;
+        padding: 10px;
+    }
+    
+    .info-panel {
+        padding: 12px;
+        max-height: 300px;
+    }
+    
+    .info-header h2 {
+        font-size: 1rem;
+    }
+    
+    .info-body p {
+        font-size: 0.85rem;
+    }
+    
+    .close-btn {
+        font-size: 20px;
+    }
+}

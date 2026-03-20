@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七色国纪</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 标题 -->
+<div class="title">
+    <img src="bt.png" alt="七色国纪" class="title-image">
+</div>
+
+<!-- ===== 新增：战场信息栏 ===== -->
+<div class="battle-section">
+    <h2 class="battle-title">⚔️ 当前战场 ⚔️</h2>
+    <div class="battle-container">
+        <div class="battle-card" id="battle1">
+            <div class="battle-name">战场1</div>
+            <div class="battle-countries">国家1 VS 国家2</div>
+        </div>
+        <div class="battle-card" id="battle2">
+            <div class="battle-name">战场2</div>
+            <div class="battle-countries">国家3 VS 国家4</div>
+        </div>
+        <div class="battle-card" id="battle3">
+            <div class="battle-name">战场3</div>
+            <div class="battle-countries">国家5 VS 国家6</div>
+        </div>
+    </div>
+</div>
+
+    <!-- 主要内容区 -->
+    <div class="main-content">
+        <!-- 左侧地图 -->
+        <div class="map-container">
+            <svg id="map" viewBox="115 60 1107 1067">
+                <!-- 9个圆形将通过JS添加 -->
+            </svg>
+        </div>
+        
+        <!-- 右侧信息栏（默认隐藏） -->
+        <div class="info-panel" id="infoPanel">
+            <div class="info-header">
+                <h2 id="countryName">国家名称</h2>
+                <button class="close-btn" onclick="closeInfo()">×</button>
+            </div>
+            <div class="info-body">
+                <p id="countryDesc">国家简介...</p>
+                <p id="countryStyle">画风参考...</p>
+                <p id="countryChars">代表人物...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
