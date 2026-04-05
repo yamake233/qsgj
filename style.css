@@ -397,3 +397,108 @@ body::before {
         font-size: 20px;
     }
 }
+/* ===== 右上角菜单 ===== */
+.menu-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* 三条横杠图标 */
+.menu-icon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* 悬停效果 */
+.menu-icon:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* 下拉菜单 */
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: rgba(30, 40, 60, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    min-width: 160px;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1001;
+}
+
+/* 显示菜单 */
+.dropdown-menu.show {
+    display: flex;
+}
+
+/* 菜单项 */
+.menu-item {
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    padding-left: 25px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .menu-container {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .menu-icon {
+        width: 30px;
+        height: 30px;
+        gap: 5px;
+    }
+    
+    .menu-icon span {
+        width: 20px;
+    }
+    
+    .dropdown-menu {
+        min-width: 140px;
+    }
+    
+    .menu-item {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}

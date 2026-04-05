@@ -308,3 +308,31 @@ function closeInfo() {
 
 // 页面加载完成后初始化
 window.onload = initMap;
+
+// ===== 菜单交互 =====
+const menuIcon = document.getElementById('menuIcon');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+// 点击图标切换菜单
+menuIcon.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdownMenu.classList.toggle('show');
+});
+
+// 点击页面其他地方关闭菜单
+document.addEventListener('click', function(event) {
+    if (!menuIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.remove('show');
+    }
+});
+
+// 菜单项点击事件（示例）
+const menuItems = document.querySelectorAll('.menu-item');
+menuItems.forEach((item, index) => {
+    item.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log(`点击了选项${index + 1}: ${this.textContent}`);
+        // 这里可以添加你的功能逻辑
+        dropdownMenu.classList.remove('show');
+    });
+});
