@@ -46,7 +46,7 @@ const countries = [
         id: 8,
         name: '白国',
         color: '#F1F1F1',  // 白色
-        image: 'images/bai.png'
+        image: 'bai.png'
     }
 ];
 
