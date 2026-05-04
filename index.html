@@ -15,61 +15,76 @@
             <span></span>
         </div>
         <div class="dropdown-menu" id="dropdownMenu">
-            <a href="#" class="menu-item">选项1</a>
-            <a href="#" class="menu-item">选项2</a>
-            <a href="#" class="menu-item">选项3</a>
-            <a href="#" class="menu-item">选项4</a>
-            <a href="#" class="menu-item">选项5</a>
+            <a href="#" class="menu-item">世界观介绍</a>
+            <a href="#" class="menu-item">序·别来无恙</a>
+            <a href="#" class="menu-item">第一章·时过境迁</a>
+            <a href="#" class="menu-item">第二章·色争于野</a>
+            <a href="#" class="menu-item">未公开</a>
+            <a href="#" class="menu-item">未公开</a>
         </div>
     </div>
 
- 
     <!-- 标题 -->
-<div class="title">
-    <img src="title.png" alt="七色国纪" class="title-image">
-</div>
+    <div class="title">
+        <img src="title.png" alt="七色国纪" class="title-image">
+    </div>
 
-<!-- ===== 新增：战场信息栏 ===== -->
-<div class="battle-section">
-    <h2 class="battle-title">⚔️ 当前战场 ⚔️</h2>
-    <div class="battle-container">
-        <div class="battle-card" id="battle1">
-            <div class="battle-name">战场1</div>
-            <div class="battle-countries">国家1 VS 国家2</div>
-        </div>
-        <div class="battle-card" id="battle2">
-            <div class="battle-name">战场2</div>
-            <div class="battle-countries">国家3 VS 国家4</div>
-        </div>
-        <div class="battle-card" id="battle3">
-            <div class="battle-name">战场3</div>
-            <div class="battle-countries">国家5 VS 国家6</div>
+    <!-- 战场信息栏 -->
+    <div class="battle-section">
+        <h2 class="battle-title">⚔️ 第二章·色争于野 ⚔️</h2>
+        <div class="battle-date">2026.05.04 - 2026.05.13</div>
+        <div class="battle-container">
+            <div class="battle-card" id="battle1" data-battle-img="images/battle1.png">
+                <div class="battle-name">旧试验场</div>
+                <div class="battle-countries">橙国 红国 VS 白国 紫国</div>
+            </div>
+            <div class="battle-card" id="battle2" data-battle-img="images/battle2.png">
+                <div class="battle-name">双生山麓</div>
+                <div class="battle-countries">青国 VS 绿国</div>
+            </div>
+            <div class="battle-card" id="battle3" data-battle-img="images/battle3.png">
+                <div class="battle-name">沉睡峡谷</div>
+                <div class="battle-countries">黑国 黄国 VS 蓝国 红国</div>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- 主要内容区 -->
     <div class="main-content">
-        <!-- 左侧地图 -->
+        <!-- 地图容器 -->
         <div class="map-container">
-            <svg id="map" viewBox="115 60 1107 1067">
-                <!-- 9个圆形将通过JS添加 -->
+            <svg id="map" viewBox="0 0 2682 1688">
+                <!-- 8个国家的路径将通过JS添加 -->
             </svg>
-        </div>
-        
-        <!-- 右侧信息栏（默认隐藏） -->
-        <div class="info-panel" id="infoPanel">
-            <div class="info-header">
-                <h2 id="countryName">国家名称</h2>
-                <button class="close-btn" onclick="closeInfo()">×</button>
-            </div>
-            <div class="info-body">
-                <p id="countryDesc">国家简介...</p>
-                <p id="countryStyle">画风参考...</p>
-                <p id="countryChars">代表人物...</p>
+            
+            <!-- 蓝国国徽按钮（右下角） -->
+            <div class="underground-emblem" id="undergroundEmblem">
+                <div class="emblem-icon">
+                    <img src="icons/blue.png" alt="蓝国">
+                </div>
+                <div class="emblem-name">*蓝国领土位于地表之下，点击国徽查看相关信息</div>
             </div>
         </div>
     </div>
+
+    <!-- 图片弹窗层（地图国家用） -->
+    <div class="image-popup" id="imagePopup">
+        <div class="popup-content">
+            <button class="popup-close" id="popupClose">×</button>
+            <img id="popupImage" src="" alt="国家图片">
+            <p id="popupCaption"></p>
+        </div>
+    </div>
+
+<!-- 战场图片弹窗（支持缩放和拖动） -->
+<div class="image-popup" id="battlePopup">
+    <div class="popup-content battle-popup-content">
+        <button class="popup-close" id="battlePopupClose">×</button>
+        <div class="image-viewer" id="imageViewer">
+            <img id="battlePopupImage" src="" alt="战场图片" class="viewer-image">
+        </div>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>
